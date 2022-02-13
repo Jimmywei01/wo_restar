@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!-- 動態表單通訊錄 -->
+
+<div>
+  <button class="add-btn">新增聯絡人</button>
+</div>
+
+<div class="contacts">
+  <div class="row">
+    姓名<input type="name" name="name">
+    電話<input type="phone" name="phone">
+    <button class="del">刪除</button>
+  </div>
+</div>
+
+  <script>
+/*
+點擊新增聯絡人
+增加 row 資訊
+可刪除 row 資訊
+*/
+
+  document.querySelector('.add-btn').addEventListener('click',function(){
+    const div = document.createElement('div')
+    div.classList.add('row')
+    div.innerHTML = `
+    姓名<input type="name" name="name">
+    電話<input type="phone" name="phone">
+    <button class="del">刪除</button>`
+
+    document.querySelector('.contacts').appendChild(div)
+  })
+
+  document.querySelector('.contacts').addEventListener('click',function(e) {
+    if(e.target.classList.contains('del')){
+      // 兩種寫法，都是找到 parent 移除
+      // document.querySelector('.contacts').removeChild(e.target.closest('.row'))
+      let deletedRow = e.target.parentElement
+      deletedRow.remove()
+    }
+  })
+
+
+
+
+
+  </script>
+</body>
+</html>

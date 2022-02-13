@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .profile{
+    display: inline-flex;
+    border: 2px solid black;
+    align-items: center;
+    margin: 10px;
+  }
+  .name{
+    margin: 0 5px;
+  }
+</style>
+<body>
+  <!-- 抓取資料並顯示 -->
+    <button class="btn">按我</button>
+    <div class="contain">
+      <!-- <div class="profile">
+        <div class="name">George</div>
+        <img src="https://reqres.in/img/faces/1-image.jpg" alt="">
+      </div>
+      <div class="profile">
+        <div class="name">George</div>
+        <img src="https://reqres.in/img/faces/1-image.jpg" alt="">
+      </div> -->
+    </div>
+
+  <script>
+
+    const contain = document.querySelector('.contain')
+    const request = new XMLHttpRequest
+    request.open('get','https://reqres.in/api/users',true)
+    request.send()
+    request.onload = function(){
+      if(request.status >=200 && request.status < 400){
+        // console.log(request.responseText)
+        const json = JSON.parse(request.responseText)
+        const users = json.data
+        for(let i = 0;i<users.length;i++){
+          const div = document.createElement('div')
+          div.classList.add('profile')
+          // console.log(users[i],i)
+          div.innerHTML = `
+          <div class="name">${users[i].first_name} ${users[i].last_name}</div>
+          <img src="${users[i].avatar}" alt="">`
+          contain.appendChild(div)
+        }
+        console.log(users)
+      }else{
+        console.log('err')
+      }
+    }
+
+    request.onerror = function(){
+      console.log('error')
+    }
+
+
+
+  </script>
+</body>
+</html>

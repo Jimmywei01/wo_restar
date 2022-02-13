@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="author">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <div>hello</div> -->
+  <!-- <div  id="b" class="active">hello ha</div> -->
+  <div class="active">lkajhflkjghdflkgjhdlkfjghldkjg</div>
+  <!-- <div class="active" data-id="SGD">1000</div> -->
+  <script>
+    // const element = document.getElementsByTagName('div') // 選 tag
+    // const element1 = document.getElementsByClassName('b') // 選 class
+    // const element2 = document.getElementById('a') // 選 id
+    // const element3 = document.querySelector('#a') // 可選 id or class
+    // element3.innerText = '<h1>hohoho</h1>'
+    // element3.innerHTML = '<h1>hohoho</h1>'
+    // element3.outerHTML = '<div id="abb">hello</div>'
+    // const item = document.createElement('div')
+    // item.innerText = 'hey'
+    // element3.removeChild(item)
+    // element3.appendChild(item)
+    // console.log(element3)
+
+    // element3.style['padding-top'] = '10px'
+    // element3.style.backgroundColor = 'red'
+    // element3.classList.add('active','active2')
+    // const element4 = document.querySelectorAll('div') // 可選多個 id or class
+    // console.log('element:',element,'element1:',element1,'element2:',element2,'element3:',element3,'element4:',element4)
+  </script>
+</body>
+  <style>
+    .active {
+      box-sizing: border-box;
+      background-color: orange;
+      height: 60px;
+      width: 150px;
+      padding: 10px;
+      border: 5px solid black;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* .active {
+      background-color: red;
+      height: 50px;
+      width: 50px;
+      border-top: 30px solid black;
+      border-bottom: 30px solid yellow;
+      border-right: 30px solid green;
+      border-left: 30px solid blue;
+    } */
+    /* .active:after{
+      content: '$'
+    } */
+
+    /* .active::after{
+      content:attr(data-id);
+      color: yellow
+    }
+
+    .active2 {
+      color: white;
+    } */
+  </style>
+</html>

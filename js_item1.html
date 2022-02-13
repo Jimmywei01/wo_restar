@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .result {
+    display: inline-block;
+    background:yellow;
+    margin-top: 10px;
+  }
+</style>
+<body>
+  <!-- 綜合示範：簡易密碼產生器
+    選擇數字、特殊符號、英文按下產生 長度 10 的密碼
+  -->
+  <label><input type="checkbox" name="en" id="">英文</label>
+  <label><input type="checkbox" name="num" id="">數字</label>
+  <label><input type="checkbox" name="sp" id="">特殊符號</label>
+  <div><button class="btn">產生</button></div>
+  <div class="result"></div>
+
+  <script>
+/*
+選項打勾，按下產生 10 碼密碼
+按下前，先判斷有沒有打勾
+設定預設密碼組合
+10 碼亂數組合
+*/
+
+  const btn = document.querySelector('.btn')
+
+  function setPassword(name,char) {
+    if(document.querySelector(`input[name=${name}]`).checked){
+      console.log(char)
+      return char
+    }
+  }
+
+  btn.addEventListener('click',function(){
+    let pass = ''
+    pass += setPassword('en','abcdefghijklmnopqrstuvwxyz')
+    pass += setPassword('num','1234567890')
+    pass += setPassword('sp','!@#$%^&*()')
+
+    // if(document.querySelector('input[name=en]').checked){
+    //   pass+='abcdefghijklmnopqrstuvwxyz'
+    // }
+    // if(document.querySelector('input[name=num]').checked){
+    //   pass+='1234567890'
+    // }
+    // if(document.querySelector('input[name=sp]').checked){
+    //   pass+='!@#$%^&*()'
+    // }
+
+    let result = ''
+    for(let i=0;i<10;i++){
+      const number = Math.floor(Math.random()*pass.length)
+      result+=pass[number]
+    }
+
+    document.querySelector('.result').innerText = result
+  })
+
+  </script>
+</body>
+</html>

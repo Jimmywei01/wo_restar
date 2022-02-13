@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+<!-- ajax 發送要搜尋的值到 web api -->
+<body>
+  Name: <input name="country-name" />
+  <button class="btn">送出</button>
+  <div class="list"></div>
+
+
+  <script>
+    $(document).ready(function(){
+      $('.btn').click(function(e){
+        let value = $('input[name=country-name]').val()
+        if(value === ''){
+          alert('請輸入要查詢的國家')
+          return
+        }
+
+        $('.list').empty()
+
+        axios.get(`https://restcountries.eu/rest/v2/name/${value}`)
+          .then(function(res){console.log(res)})
+          .
+        $.ajax({
+        type: 'get',
+        url: `https://restcountries.eu/rest/v2/name/${value}`,
+        success:function(rep){
+          // console.log(rep)
+          for(let country of rep){
+            // console.log(contury)
+            $('.list').append(`<div>${country.alpha2Code} ${country.name} ${country.nativeName}</div>`)
+          }
+        },
+        error: err => alert('有問題')
+        });
+      })
+    })
+  </script>
+</body>
+</html>

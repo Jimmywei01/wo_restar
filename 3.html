@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    3-1 整體寬度為 100%
+    3-2 Right-panel 寬度為 30%, Content 寬度為 70%
+    3-3 Content 最小高度為 2 個螢幕高度
+    3-4 Header 為 sticky 會隨著滾動持續在最頂端
+  -->
+  <header>
+    <div class="nav">
+      <h1>Header</h1>
+    </div>
+  </header>
+  <main>
+    <div class="main_content">
+      <h1>Main Content</h1>
+    </div>
+    <div class="main_right">
+      <h1>Right Panel</h1>
+    </div>
+  </main>
+  <footer>
+      <div class="footer">
+        <h1>Footer</h1>
+      </div>
+  </footer>
+</body>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  position: sticky;
+  top: 0px;
+}
+.nav{
+  height:10vh;
+  width: 100vw;
+  background-color:gray;
+  text-align: center;
+  line-height:10vh;
+}
+
+main{
+  display: flex;
+  text-align: center;
+  line-height: 200vh;
+}
+.main_content{
+  width: 70%;
+  min-height: 200vh;
+  background-color:yellow;
+}
+
+.main_right{
+  width: 30%;
+  background-color:bisque;
+}
+footer{
+  height:10vh;
+  width: 100vw;
+  background-color:gray;
+  text-align: center;
+  line-height:10vh;
+}
+</style>
+<script>
+  if (window.Worker) {
+  var myWorker = new Worker('worker.js');
+    console.log(myWorker);
+  }
+</script>
+</html>

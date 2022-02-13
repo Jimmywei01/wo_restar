@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/style2.css">
+</head>
+<body>
+  <!-- twitter api 間接
+  點擊不同 radio ，切換打不同 API 顯示頁面
+  -->
+
+<!-- client_id=7bkv4wxbjw1u1crs4ofptqfdypr56q
+client_secret=7i1wf9mbw4w0m7tups2lbaf45ximah
+{"access_token":"34b36cjz9ciqae0u35crjlcu4hwxfp","expires_in":4848537,"token_type":"bearer"} -->
+
+  <div class="app">
+    <div class="header-block clearfix">
+      <img src="../asset/og.jpg" alt="" class="header_title">
+      <h1>剪輯&amp;遊戲排行榜</h1>
+      <div class="line"></div>
+      <div class="box-selece">
+        <label><input type="radio" name='group' value="Clips Top 10" class="clipsTop">熱門剪輯</label>
+        <label><input type="radio" name='group' value="All Clips" class="allClips">當月剪輯</label>
+        <label><input type="radio" name='group' value="All Games" class="allGames">熱門遊戲</label>
+      </div>
+    </div>
+    <div class="contain">
+      <div class="clips"></div>
+    </div>
+  </div>
+  <script src="../JS/main.js"></script>
+</body>
+</html>

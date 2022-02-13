@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <button class="active">hello ha</button> -->
+
+  <!-- <form action="" method="get">
+    <div>
+      username:<input type="text" id="name">
+    </div>
+    <div>
+      password:<input type="password" name="password" id="password">
+    </div>
+    <div>
+      password2:<input type="password" name="password2" id="password2">
+    </div>
+    <input type="submit" value="送出" class="sb">
+  </form> -->
+
+
+    <!-- <div class="outter">
+      <div class="inner">
+        <button class="btn">按我</button>
+      </div>
+    </div> -->
+
+     <!-- <ul id="list">
+       <li data-index="1">1</li>
+       <li data-index="2">2</li>
+       <li data-index="3">3</li>
+     </ul> -->
+
+     <div class="outer">
+       <button class="add">add</button>
+       <button class="btn" data-id="1">1</button>
+       <button class="btn" data-id="2">2</button>
+     </div>
+
+
+  <script>
+// 監聽 & 事件 ＆ 新增 class
+      // let ac = document.querySelector('.active')
+      // ac.addEventListener('click',function(e){
+      //   document.querySelector('body').classList.toggle('active2')
+      // })
+
+// 送出之前驗證 username password 是否輸入正確
+      // const sb = document.querySelector('.sb')
+      // sb.addEventListener('submit',function(e){
+      //   let name = document.querySelector('#name')
+      //   let pwd1 = document.querySelector('#password')
+      //   let pwd2 = document.querySelector('#password2')
+      //   if(name.value === ''){
+      //     pwd1.value = ''
+      //     pwd2.value = ''
+      //     alert('請輸入姓名')
+      //     e.preventDefault()
+      //   }else if(pwd1.value !== pwd2.value){
+      //     pwd1.value = ''
+      //     pwd2.value = ''
+      //     alert('密碼不正確')
+      //     e.preventDefault()
+      //   }
+      // })
+
+// 事件傳遞機制
+    // className('.outter')
+    // className('.inner')
+    // className('.btn')
+
+    // function className(item) {
+    //   document.querySelector(item).addEventListener('click',function(e){
+    //     e.stopPropagation()
+    //     console.log('item:',item)
+    //   },false)
+    // }
+
+// 事件代理
+// document.getElementById('list').addEventListener('click', (e) => {
+//   console.log(e.target.getAttribute('data-index'));
+// })
+
+
+// 事件代理
+/* add 後新增 button，點擊 button alert id編號
+<button class="add">add</button>
+<button class="btn" data-id="1">1</button>
+<button class="btn" data-id="2">2</button>
+*/
+
+
+// 在每個 btn 加入事件，有多少 btn 就監聽多少次 -> 沒效率
+// const btn = document.querySelectorAll('.btn')
+// function clickBtn(btn) {
+//   for(let i = 0;i<btn.length;i++){
+//     btn[i].addEventListener('click',function(e){
+//       alert(e.target.getAttribute('data-id'))
+//     })
+//   }
+// }
+
+// 利用『捕獲』的機制來控制 btn -> 只要監聽一次
+const outer = document.querySelector('.outer')
+function clickBtn2(outer) {
+  outer.addEventListener('click',function(e){
+    if(e.target.classList.contains('btn')){
+      alert(e.target.getAttribute('data-id'))
+    }
+  })
+}
+
+// 先設定元素，在設定屬性
+let num = 3
+const add = document.querySelector('.add')
+function clickAdd(add) {
+  add.addEventListener('click',function(e){
+    const btn = document.createElement('button')
+    btn.classList.add('btn')
+    btn.setAttribute('data-id',num)
+    btn.innerText = num
+    num++
+    document.querySelector('.outer').appendChild(btn)
+  })
+}
+
+clickBtn2(outer)
+clickAdd(add)
+
+  </script>
+</body>
+<style>
+  .active2{
+    background-color: red;
+  }
+
+ .outter{
+   background-color: red;
+   width: 200px;
+   height: 200px;
+ }
+ .inner{
+   background-color: blue;
+   width: 100px;
+   height: 100px;
+ }
+
+</style>
+</html>

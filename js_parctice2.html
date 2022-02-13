@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src=""></script>
+</head>
+<body>
+
+  <!-- <form action="https://google.com" method="POST">
+    name: <input type="name">
+    <input type="submit" value="發送">
+  </form> -->
+
+<script>
+  const request = new XMLHttpRequest
+  // request.open('post','https://reqres.in/api/users',true)
+  request.open('post','https://google.com',true)
+  request.setRequestHeader('access-control-allow-origin:', "*")
+  // let data = {
+  //   name:'jimmy',
+  //   password:'aaaaa'
+  // }
+  // let dataStr = JSON.stringify(data)
+  // request.send(dataStr)
+  request.send()
+  request.onload = function(){
+    if(request.status >= 200 && request.status < 400){
+      console.log(request.responseText)
+    }else{
+      console.log('err')
+    }
+  }
+
+  request.onerror = function(){
+    console.log('error')
+  }
+</script>
+
+</body>
+</html>

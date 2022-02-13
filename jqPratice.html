@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"
+  ></script>
+</head>
+<style>
+  .box{
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+  }
+  .todos-inner{
+    border: 1px solid black;
+    /* display: inline-blocke; */
+  }
+</style>
+<body>
+  <input type="text" class="todo-input">
+  <button class="btn">addTodo</button>
+  <button class="btn2">removeAllTodo</button>
+  <div class="todos"></div>
+
+
+<script>
+// $(document).ready(function(){
+//   let hide = false
+//   $('.btn').click(function(){
+//     // alert('hello')
+//     // $('.box').text('hihi')
+//     if(hide){
+//       $('.box').show()
+//     }else{
+//       $('.box').hide()
+//     }
+//     hide = !hide
+//     console.log(hide)
+//   })
+// })
+
+  // <input type="text" class="todo-input">
+  //   <button class="btn">Btn</button>
+  //   <div class="todos"></div>
+// .todos - inner
+
+/*todo list
+把 input 的值 append 到 todos-inner 底下
+*/
+$(document).ready(function(){
+  $('.btn').click(function(){
+    let value = $('.todo-input').val()
+    $('.todo-input').val('')
+    $('.todos').append(`
+      <div class="todos-inner">${value}
+      <button class='todo-down'>未完成</button>
+      <button class='todo-dele'>刪除</button></div>
+    `)
+  })
+// 刪除
+  $('.todos').on('click','.todo-dele',function(e){
+    $(e.target).parent().remove()
+  })
+
+// 完成
+  $('.todos').on('click','.todo-down',function(e){
+    let value = $(e.target).parent()
+
+    if($(e.target).hasClass('complate')){
+      $(e.target).text('未完成')
+      value.css('color', 'black')
+      $(e.target).removeClass('complate')
+    }else{
+      $(e.target).text('完成')
+      value.css('color', 'green')
+      $(e.target).addClass('complate')
+    }
+  })
+
+// 刪除全部
+  $('.btn2').click(function(){
+    $('.todos').empty()
+  })
+})
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+
+</html>
